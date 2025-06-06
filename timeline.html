@@ -40,6 +40,146 @@
             box-shadow: 0 10px 30px rgba(0,0,0,0.2);
         }
 
+        .interactive-timeline {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            border-radius: 20px;
+            padding: 40px 20px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+        .timeline-track {
+            position: relative;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto 30px;
+            padding: 0 50px;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 50%;
+            left: 50px;
+            right: 50px;
+            height: 6px;
+            background: linear-gradient(90deg, #ff6b6b 0%, #ff6b6b 33%, #4ecdc4 33%, #4ecdc4 66%, #45b7d1 66%, #45b7d1 100%);
+            border-radius: 3px;
+            transform: translateY(-50%);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .timeline-point {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 2;
+        }
+
+        .timeline-point:hover {
+            transform: translateY(-5px);
+        }
+
+        .point-circle {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            border: 4px solid white;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+            transition: all 0.3s ease;
+            font-size: 1.8em;
+        }
+
+        .past-point .point-circle {
+            background: linear-gradient(135deg, #ff6b6b, #ff5252);
+        }
+
+        .present-point .point-circle {
+            background: linear-gradient(135deg, #4ecdc4, #26a69a);
+        }
+
+        .future-point .point-circle {
+            background: linear-gradient(135deg, #45b7d1, #2196f3);
+        }
+
+        .timeline-point:hover .point-circle {
+            transform: scale(1.1);
+            box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+        }
+
+        .point-label {
+            text-align: center;
+            color: #333;
+        }
+
+        .point-label h3 {
+            margin: 0 0 5px;
+            font-size: 1.2em;
+            font-weight: bold;
+        }
+
+        .point-label p {
+            margin: 0 0 3px;
+            font-size: 0.9em;
+            color: #666;
+        }
+
+        .point-label small {
+            color: #888;
+            font-size: 0.8em;
+        }
+
+        .timeline-examples {
+            display: flex;
+            justify-content: space-between;
+            max-width: 800px;
+            margin: 0 auto;
+            gap: 20px;
+        }
+
+        .example-box {
+            flex: 1;
+            padding: 15px;
+            border-radius: 12px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+        .example-box:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+        }
+
+        .past-example {
+            background: linear-gradient(135deg, #ff6b6b, #ff5252);
+        }
+
+        .present-example {
+            background: linear-gradient(135deg, #4ecdc4, #26a69a);
+        }
+
+        .future-example {
+            background: linear-gradient(135deg, #45b7d1, #2196f3);
+        }
+
+        .example-box strong {
+            display: block;
+            font-size: 1em;
+            margin-bottom: 5px;
+        }
+
+        .example-box small {
+            opacity: 0.8;
+            font-size: 0.8em;
+        }
+
         .timeline-image {
             text-align: center;
             margin: 20px 0;
@@ -238,18 +378,56 @@
         <h1>Englische Zeiten - Vollständiger Leitfaden</h1>
         
         <div class="timeline-container">
-            <h2 style="text-align: center; margin-bottom: 20px;">Zeitstrahl der englischen Zeiten</h2>
-            <div class="timeline-image">
-                <div id="imageContainer" style="text-align: center; padding: 20px;">
-                    <p style="color: #666; font-style: italic; margin-bottom: 15px;">
-                        Hier würde Ihr hochgeladenes Zeitstrahl-Bild angezeigt werden.<br>
-                        Bitte speichern Sie die HTML-Datei und fügen Sie das Bild manuell hinzu.
-                    </p>
-                    <div style="border: 2px dashed #ccc; padding: 40px; border-radius: 10px; background: #f9f9f9;">
-                        <p style="color: #999; margin: 0;">📷 Zeitstrahl-Bild hier einfügen</p>
-                        <small style="color: #666;">
-                            Ersetzen Sie diesen Bereich durch: &lt;img src="ihr-zeitstrahl-bild.png" alt="English Tenses Timeline" style="width: 100%; max-width: 900px; height: auto;"&gt;
-                        </small>
+            <h2 style="text-align: center; margin-bottom: 30px;">Zeitstrahl der englischen Zeiten</h2>
+            <div class="interactive-timeline">
+                <div class="timeline-track">
+                    <div class="timeline-line"></div>
+                    <div class="timeline-point past-point" onclick="filterTenses('past')" data-category="past">
+                        <div class="point-circle">
+                            <span class="point-icon">📅</span>
+                        </div>
+                        <div class="point-label">
+                            <h3>PAST</h3>
+                            <p>Vergangenheit</p>
+                            <small>6 Zeitformen</small>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-point present-point" onclick="filterTenses('present')" data-category="present">
+                        <div class="point-circle">
+                            <span class="point-icon">⏰</span>
+                        </div>
+                        <div class="point-label">
+                            <h3>PRESENT</h3>
+                            <p>Gegenwart</p>
+                            <small>2 Zeitformen</small>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-point future-point" onclick="filterTenses('future')" data-category="future">
+                        <div class="point-circle">
+                            <span class="point-icon">🚀</span>
+                        </div>
+                        <div class="point-label">
+                            <h3>FUTURE</h3>
+                            <p>Zukunft</p>
+                            <small>4 Zeitformen</small>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="timeline-examples">
+                    <div class="example-box past-example">
+                        <strong>I worked yesterday</strong><br>
+                        <small>Simple Past</small>
+                    </div>
+                    <div class="example-box present-example">
+                        <strong>I work every day</strong><br>
+                        <small>Simple Present</small>
+                    </div>
+                    <div class="example-box future-example">
+                        <strong>I will work tomorrow</strong><br>
+                        <small>Will-Future</small>
                     </div>
                 </div>
             </div>
@@ -278,9 +456,9 @@
                 </div>
                 <div class="examples">
                     <div class="examples-title">Beispiele:</div>
-                    <div class="example">• I worked yesterday. (Ich arbeitete gestern.)</div>
-                    <div class="example">• She went to London last week. (Sie ging letzte Woche nach London.)</div>
-                    <div class="example">• They bought a new car. (Sie kauften ein neues Auto.)</div>
+                    <div class="example">• I <strong>worked</strong> yesterday. (Ich arbeitete gestern.)</div>
+                    <div class="example">• She <strong>went</strong> to London last week. (Sie ging letzte Woche nach London.)</div>
+                    <div class="example">• They <strong>bought</strong> a new car. (Sie kauften ein neues Auto.)</div>
                 </div>
                 <div class="usage-info">
                     <div class="usage-title">Verwendung:</div>
@@ -302,9 +480,9 @@
                 </div>
                 <div class="examples">
                     <div class="examples-title">Beispiele:</div>
-                    <div class="example">• I was reading at 8 o'clock. (Ich las um 8 Uhr.)</div>
-                    <div class="example">• They were playing football. (Sie spielten Fußball.)</div>
-                    <div class="example">• She was cooking when I arrived. (Sie kochte, als ich ankam.)</div>
+                    <div class="example">• I <strong>was reading</strong> at 8 o'clock. (Ich las um 8 Uhr.)</div>
+                    <div class="example">• They <strong>were playing</strong> football. (Sie spielten Fußball.)</div>
+                    <div class="example">• She <strong>was cooking</strong> when I arrived. (Sie kochte, als ich ankam.)</div>
                 </div>
                 <div class="usage-info">
                     <div class="usage-title">Verwendung:</div>
@@ -326,9 +504,9 @@
                 </div>
                 <div class="examples">
                     <div class="examples-title">Beispiele:</div>
-                    <div class="example">• I have visited London. (Ich habe London besucht.)</div>
-                    <div class="example">• She has just arrived. (Sie ist gerade angekommen.)</div>
-                    <div class="example">• We have lived here for 5 years. (Wir leben seit 5 Jahren hier.)</div>
+                    <div class="example">• I <strong>have visited</strong> London. (Ich habe London besucht.)</div>
+                    <div class="example">• She <strong>has</strong> just <strong>arrived</strong>. (Sie ist gerade angekommen.)</div>
+                    <div class="example">• We <strong>have lived</strong> here for 5 years. (Wir leben seit 5 Jahren hier.)</div>
                 </div>
                 <div class="usage-info">
                     <div class="usage-title">Verwendung:</div>
@@ -350,9 +528,9 @@
                 </div>
                 <div class="examples">
                     <div class="examples-title">Beispiele:</div>
-                    <div class="example">• I have been studying for 3 hours. (Ich lerne seit 3 Stunden.)</div>
-                    <div class="example">• It has been raining all day. (Es regnet den ganzen Tag.)</div>
-                    <div class="example">• They have been waiting since morning. (Sie warten seit dem Morgen.)</div>
+                    <div class="example">• I <strong>have been studying</strong> for 3 hours. (Ich lerne seit 3 Stunden.)</div>
+                    <div class="example">• It <strong>has been raining</strong> all day. (Es regnet den ganzen Tag.)</div>
+                    <div class="example">• They <strong>have been waiting</strong> since morning. (Sie warten seit dem Morgen.)</div>
                 </div>
                 <div class="usage-info">
                     <div class="usage-title">Verwendung:</div>
@@ -374,9 +552,9 @@
                 </div>
                 <div class="examples">
                     <div class="examples-title">Beispiele:</div>
-                    <div class="example">• I had finished work before I went home. (Ich hatte die Arbeit beendet, bevor ich nach Hause ging.)</div>
-                    <div class="example">• She had already left when I arrived. (Sie war bereits gegangen, als ich ankam.)</div>
-                    <div class="example">• They had lived there for 10 years before moving. (Sie hatten 10 Jahre dort gelebt, bevor sie umzogen.)</div>
+                    <div class="example">• I <strong>had finished</strong> work before I went home. (Ich hatte die Arbeit beendet, bevor ich nach Hause ging.)</div>
+                    <div class="example">• She <strong>had</strong> already <strong>left</strong> when I arrived. (Sie war bereits gegangen, als ich ankam.)</div>
+                    <div class="example">• They <strong>had lived</strong> there for 10 years before moving. (Sie hatten 10 Jahre dort gelebt, bevor sie umzogen.)</div>
                 </div>
                 <div class="usage-info">
                     <div class="usage-title">Verwendung:</div>
@@ -398,9 +576,9 @@
                 </div>
                 <div class="examples">
                     <div class="examples-title">Beispiele:</div>
-                    <div class="example">• I had been working for 2 hours when she called. (Ich hatte 2 Stunden gearbeitet, als sie anrief.)</div>
-                    <div class="example">• They had been living there for years. (Sie hatten jahrelang dort gelebt.)</div>
-                    <div class="example">• It had been raining before the sun came out. (Es hatte geregnet, bevor die Sonne herauskam.)</div>
+                    <div class="example">• I <strong>had been working</strong> for 2 hours when she called. (Ich hatte 2 Stunden gearbeitet, als sie anrief.)</div>
+                    <div class="example">• They <strong>had been living</strong> there for years. (Sie hatten jahrelang dort gelebt.)</div>
+                    <div class="example">• It <strong>had been raining</strong> before the sun came out. (Es hatte geregnet, bevor die Sonne herauskam.)</div>
                 </div>
                 <div class="usage-info">
                     <div class="usage-title">Verwendung:</div>
@@ -423,9 +601,9 @@
                 </div>
                 <div class="examples">
                     <div class="examples-title">Beispiele:</div>
-                    <div class="example">• I work every day. (Ich arbeite jeden Tag.)</div>
-                    <div class="example">• She plays tennis on Mondays. (Sie spielt montags Tennis.)</div>
-                    <div class="example">• The sun rises in the east. (Die Sonne geht im Osten auf.)</div>
+                    <div class="example">• I <strong>work</strong> every day. (Ich arbeite jeden Tag.)</div>
+                    <div class="example">• She <strong>plays</strong> tennis on Mondays. (Sie spielt montags Tennis.)</div>
+                    <div class="example">• The sun <strong>rises</strong> in the east. (Die Sonne geht im Osten auf.)</div>
                 </div>
                 <div class="usage-info">
                     <div class="usage-title">Verwendung:</div>
@@ -447,9 +625,9 @@
                 </div>
                 <div class="examples">
                     <div class="examples-title">Beispiele:</div>
-                    <div class="example">• I am working now. (Ich arbeite gerade.)</div>
-                    <div class="example">• She is reading a book. (Sie liest ein Buch.)</div>
-                    <div class="example">• They are studying this semester. (Sie studieren dieses Semester.)</div>
+                    <div class="example">• I <strong>am working</strong> now. (Ich arbeite gerade.)</div>
+                    <div class="example">• She <strong>is reading</strong> a book. (Sie liest ein Buch.)</div>
+                    <div class="example">• They <strong>are studying</strong> this semester. (Sie studieren dieses Semester.)</div>
                 </div>
                 <div class="usage-info">
                     <div class="usage-title">Verwendung:</div>
@@ -472,9 +650,9 @@
                 </div>
                 <div class="examples">
                     <div class="examples-title">Beispiele:</div>
-                    <div class="example">• I will help you. (Ich werde dir helfen.)</div>
-                    <div class="example">• It will rain tomorrow. (Es wird morgen regnen.)</div>
-                    <div class="example">• She will be 30 next year. (Sie wird nächstes Jahr 30.)</div>
+                    <div class="example">• I <strong>will help</strong> you. (Ich werde dir helfen.)</div>
+                    <div class="example">• It <strong>will rain</strong> tomorrow. (Es wird morgen regnen.)</div>
+                    <div class="example">• She <strong>will be</strong> 30 next year. (Sie wird nächstes Jahr 30.)</div>
                 </div>
                 <div class="usage-info">
                     <div class="usage-title">Verwendung:</div>
@@ -496,9 +674,9 @@
                 </div>
                 <div class="examples">
                     <div class="examples-title">Beispiele:</div>
-                    <div class="example">• I am going to visit my grandmother. (Ich werde meine Großmutter besuchen.)</div>
-                    <div class="example">• Look at those clouds! It's going to rain. (Schau dir diese Wolken an! Es wird regnen.)</div>
-                    <div class="example">• They are going to move to Berlin. (Sie werden nach Berlin ziehen.)</div>
+                    <div class="example">• I <strong>am going to visit</strong> my grandmother. (Ich werde meine Großmutter besuchen.)</div>
+                    <div class="example">• Look at those clouds! It<strong>'s going to rain</strong>. (Schau dir diese Wolken an! Es wird regnen.)</div>
+                    <div class="example">• They <strong>are going to move</strong> to Berlin. (Sie werden nach Berlin ziehen.)</div>
                 </div>
                 <div class="usage-info">
                     <div class="usage-title">Verwendung:</div>
@@ -520,9 +698,9 @@
                 </div>
                 <div class="examples">
                     <div class="examples-title">Beispiele:</div>
-                    <div class="example">• I will be working at 9 o'clock tomorrow. (Ich werde morgen um 9 Uhr arbeiten.)</div>
-                    <div class="example">• She will be studying this time next week. (Sie wird nächste Woche um diese Zeit lernen.)</div>
-                    <div class="example">• They will be flying to New York. (Sie werden nach New York fliegen.)</div>
+                    <div class="example">• I <strong>will be working</strong> at 9 o'clock tomorrow. (Ich werde morgen um 9 Uhr arbeiten.)</div>
+                    <div class="example">• She <strong>will be studying</strong> this time next week. (Sie wird nächste Woche um diese Zeit lernen.)</div>
+                    <div class="example">• They <strong>will be flying</strong> to New York. (Sie werden nach New York fliegen.)</div>
                 </div>
                 <div class="usage-info">
                     <div class="usage-title">Verwendung:</div>
@@ -544,9 +722,9 @@
                 </div>
                 <div class="examples">
                     <div class="examples-title">Beispiele:</div>
-                    <div class="example">• I will have finished by 6 o'clock. (Ich werde bis 6 Uhr fertig sein.)</div>
-                    <div class="example">• She will have graduated by next year. (Sie wird bis nächstes Jahr ihren Abschluss haben.)</div>
-                    <div class="example">• They will have left before we arrive. (Sie werden gegangen sein, bevor wir ankommen.)</div>
+                    <div class="example">• I <strong>will have finished</strong> by 6 o'clock. (Ich werde bis 6 Uhr fertig sein.)</div>
+                    <div class="example">• She <strong>will have graduated</strong> by next year. (Sie wird bis nächstes Jahr ihren Abschluss haben.)</div>
+                    <div class="example">• They <strong>will have left</strong> before we arrive. (Sie werden gegangen sein, bevor wir ankommen.)</div>
                 </div>
                 <div class="usage-info">
                     <div class="usage-title">Verwendung:</div>
@@ -568,9 +746,9 @@
                 </div>
                 <div class="examples">
                     <div class="examples-title">Beispiele:</div>
-                    <div class="example">• I will have been working for 8 hours by 5 o'clock. (Ich werde bis 5 Uhr 8 Stunden gearbeitet haben.)</div>
-                    <div class="example">• She will have been studying English for 2 years. (Sie wird 2 Jahre lang Englisch gelernt haben.)</div>
-                    <div class="example">• They will have been living here for a decade. (Sie werden ein Jahrzehnt lang hier gelebt haben.)</div>
+                    <div class="example">• I <strong>will have been working</strong> for 8 hours by 5 o'clock. (Ich werde bis 5 Uhr 8 Stunden gearbeitet haben.)</div>
+                    <div class="example">• She <strong>will have been studying</strong> English for 2 years. (Sie wird 2 Jahre lang Englisch gelernt haben.)</div>
+                    <div class="example">• They <strong>will have been living</strong> here for a decade. (Sie werden ein Jahrzehnt lang hier gelebt haben.)</div>
                 </div>
                 <div class="usage-info">
                     <div class="usage-title">Verwendung:</div>
