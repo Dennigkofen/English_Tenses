@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Present Simple - Detaillierte Übungen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .section {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #10b981, #059669);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #1e293b;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .theory-card {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #10b981;
+        }
+
+        .theory-card h3 {
+            color: #1e293b;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .theory-card p {
+            margin-bottom: 10px;
+            color: #475569;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #059669;
+            margin-top: 15px;
+        }
+
+        .example-box strong {
+            color: #047857;
+        }
+
+        .quiz-container {
+            margin-top: 30px;
+        }
+
+        .question {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #3b82f6;
+        }
+
+        .question h4 {
+            color: #1e293b;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .answers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .answer-option {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .answer-option:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+        }
+
+        .answer-option.selected {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .answer-option.correct {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+
+        .answer-option.incorrect {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        .exercise-container {
+            margin-top: 30px;
+        }
+
+        .exercise-item {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border-left: 5px solid #8b5cf6;
+        }
+
+        .exercise-item p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #1e293b;
+        }
+
+        .input-field {
+            width: 200px;
+            padding: 10px 15px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        .input-field.correct {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+
+        .input-field.incorrect {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 10px 5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-reset {
+            background: linear-gradient(135deg, #64748b, #475569);
+            color: white;
+            box-shadow: 0 4px 15px rgba(100, 116, 139, 0.3);
+        }
+
+        .btn-reset:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(100, 116, 139, 0.4);
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+
+        .score-display {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px solid #f59e0b;
+        }
+
+        .score-display h3 {
+            color: #92400e;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            background: #e5e7eb;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #10b981, #059669);
+            height: 100%;
+            transition: width 0.5s ease;
+            border-radius: 5px;
+        }
+
+        .feedback {
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        .feedback.success {
+            background: #ecfdf5;
+            color: #047857;
+            border: 2px solid #10b981;
+        }
+
+        .feedback.error {
+            background: #fef2f2;
+            color: #b91c1c;
+            border: 2px solid #ef4444;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .theory-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .answers {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-field {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⏺️ Present Simple</h1>
+            <p>Meistere die wichtigste Zeitform im Englischen!</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="btn btn-back">🏠 Zurück zur Hauptseite</a>
+            </div>
+        </div>
+
+        <!-- Theory Section -->
+        <div class="section">
+            <div class="section-title">
+                <span>📚</span>
+                Theorie & Regeln
+            </div>
+            
+            <div class="theory-grid">
+                <div class="theory-card">
+                    <h3>🔨 Bildung</h3>
+                    <p><strong>Bejahung:</strong></p>
+                    <p>I/You/We/They + <strong>Grundform</strong></p>
+                    <p>He/She/It + <strong>Grundform + -s</strong></p>
+                    
+                    <div class="example-box">
+                        <strong>Beispiele:</strong><br>
+                        I <strong>play</strong> tennis.<br>
+                        She <strong>plays</strong> tennis.
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3>❌ Verneinung</h3>
+                    <p><strong>Mit don't/doesn't:</strong></p>
+                    <p>I/You/We/They + <strong>don't</strong> + Grundform</p>
+                    <p>He/She/It + <strong>doesn't</strong> + Grundform</p>
+                    
+                    <div class="example-box">
+                        <strong>Beispiele:</strong><br>
+                        I <strong>don't like</strong> coffee.<br>
+                        He <strong>doesn't work</strong> here.
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3>❓ Fragen</h3>
+                    <p><strong>Mit Do/Does:</strong></p>
+                    <p><strong>Do</strong> + I/you/we/they + Grundform?</p>
+                    <p><strong>Does</strong> + he/she/it + Grundform?</p>
+                    
+                    <div class="example-box">
+                        <strong>Beispiele:</strong><br>
+                        <strong>Do you speak</strong> German?<br>
+                        <strong>Does she live</strong> here?
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3>🤔 Verwendung</h3>
+                    <p>• Gewohnheiten und Routinen</p>
+                    <p>• Allgemeine Wahrheiten</p>
+                    <p>• Feste Zeiten/Programme</p>
+                    
+                    <div class="example-box">
+                        <strong>Beispiele:</strong><br>
+                        I <strong>get up</strong> at 7 AM every day.<br>
+                        The sun <strong>rises</strong> in the east.<br>
+                        The train <strong>leaves</strong> at 9 PM.
+                    </div>
+                </div>
+            </div>
+
+            <div class="theory-card">
+                <h3>⚠️ Wichtige -s Regeln für he/she/it</h3>
+                <p><strong>Normalfall:</strong> work → work<strong>s</strong>, like → like<strong>s</strong></p>
+                <p><strong>Nach -s, -sh, -ch, -x, -o:</strong> watch → watch<strong>es</strong>, go → go<strong>es</strong></p>
+                <p><strong>Konsonant + y:</strong> study → stud<strong>ies</strong>, try → tr<strong>ies</strong></p>
+                <p><strong>Vokal + y:</strong> play → play<strong>s</strong>, buy → buy<strong>s</strong></p>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="section">
+            <div class="section-title">
+                <span>🧠</span>
+                Quiz: Wann benutze ich Present Simple?
+            </div>
+            
+            <div class="quiz-container" id="quizContainer">
+                <!-- Quiz questions will be inserted here -->
+            </div>
+            
+            <div class="score-display hidden" id="quizScore">
+                <h3>Dein Ergebnis:</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="quizProgress"></div>
+                </div>
+                <p id="scoreText">0 von 10 richtig</p>
+            </div>
+            
+            <button class="btn btn-primary" onclick="checkQuizAnswers()">Quiz auswerten</button>
+            <button class="btn btn-reset" onclick="resetQuiz()">Nochmal versuchen</button>
+        </div>
+
+        <!-- Exercise Section -->
+        <div class="section">
+            <div class="section-title">
+                <span>✏️</span>
+                Übungen: Formen bilden
+            </div>
+            
+            <div class="exercise-container" id="exerciseContainer">
+                <!-- Exercises will be inserted here -->
+            </div>
+            
+            <div class="score-display hidden" id="exerciseScore">
+                <h3>Dein Ergebnis:</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="exerciseProgress"></div>
+                </div>
+                <p id="exerciseScoreText">0 von 15 richtig</p>
+            </div>
+            
+            <button class="btn btn-success" onclick="checkExercises()">Übungen prüfen</button>
+            <button class="btn btn-reset" onclick="resetExercises()">Neue Übungen</button>
+        </div>
+    </div>
+
+    <script>
+        // Quiz Data
+        const quizQuestions = [
+            {
+                question: "Welcher Satz verwendet Present Simple korrekt für eine Gewohnheit?",
+                answers: [
+                    "I am eating breakfast every morning.",
+                    "I eat breakfast every morning.",
+                    "I will eat breakfast every morning.",
+                    "I have eaten breakfast every morning."
+                ],
+                correct: 1
+            },
+            {
+                question: "Wähle die richtige Verneinung:",
+                answers: [
+                    "She doesn't likes pizza.",
+                    "She don't like pizza.",
+                    "She doesn't like pizza.",
+                    "She not likes pizza."
+                ],
+                correct: 2
+            },
+            {
+                question: "Welche Aussage ist eine allgemeine Wahrheit (Present Simple)?",
+                answers: [
+                    "Water is boiling at 100°C right now.",
+                    "Water will boil at 100°C.",
+                    "Water has boiled at 100°C.",
+                    "Water boils at 100°C."
+                ],
+                correct: 3
+            },
+            {
+                question: "Wie lautet die korrekte Frage?",
+                answers: [
+                    "Does you speak English?",
+                    "Do you speaks English?",
+                    "Do you speak English?",
+                    "Are you speak English?"
+                ],
+                correct: 2
+            },
+            {
+                question: "Welcher Satz beschreibt eine Routine?",
+                answers: [
+                    "I am working in the garden now.",
+                    "I worked in the garden yesterday.",
+                    "I work in the garden every weekend.",
+                    "I will work in the garden tomorrow."
+                ],
+                correct: 2
+            },
+            {
+                question: "Wähle die richtige Form für 'he':",
+                answers: [
+                    "He go to school by bus.",
+                    "He goes to school by bus.",
+                    "He going to school by bus.",
+                    "He is go to school by bus."
+                ],
+                correct: 1
+            },
+            {
+                question: "Welcher Zeitausdruck passt zu Present Simple?",
+                answers: [
+                    "right now",
+                    "at the moment",
+                    "every day",
+                    "yesterday"
+                ],
+                correct: 2
+            },
+            {
+                question: "Wie verneinst du korrekt mit 'they'?",
+                answers: [
+                    "They doesn't play football.",
+                    "They don't plays football.",
+                    "They don't play football.",
+                    "They not play football."
+                ],
+                correct: 2
+            },
+            {
+                question: "Welcher Satz ist ein fester Zeitplan?",
+                answers: [
+                    "The movie is starting at 8 PM tonight.",
+                    "The movie starts at 8 PM tonight.",
+                    "The movie will start at 8 PM tonight.",
+                    "The movie started at 8 PM tonight."
+                ],
+                correct: 1
+            },
+            {
+                question: "Wähle die richtige -s Form:",
+                answers: [
+                    "She studys English.",
+                    "She studies English.",
+                    "She studyes English.",
+                    "She studie English."
+                ],
+                correct: 1
+            }
+        ];
+
+        // Exercise Data
+        const exercises = [
+            { sentence: "I ___ (play) tennis every Sunday.", answer: "play", type: "positive" },
+            { sentence: "She ___ (work) in a bank.", answer: "works", type: "positive" },
+            { sentence: "They ___ (not/like) coffee.", answer: "don't like", type: "negative" },
+            { sentence: "He ___ (not/speak) German.", answer: "doesn't speak", type: "negative" },
+            { sentence: "___ you ___ (live) here? (Frage)", answer: "Do, live", type: "question" },
+            { sentence: "___ she ___ (have) a car? (Frage)", answer: "Does, have", type: "question" },
+            { sentence: "We ___ (watch) TV in the evening.", answer: "watch", type: "positive" },
+            { sentence: "The sun ___ (rise) in the east.", answer: "rises", type: "positive" },
+            { sentence: "My cat ___ (not/eat) fish.", answer: "doesn't eat", type: "negative" },
+            { sentence: "Children ___ (go) to school every day.", answer: "go", type: "positive" },
+            { sentence: "___ your brother ___ (play) football? (Frage)", answer: "Does, play", type: "question" },
+            { sentence: "I ___ (not/understand) this lesson.", answer: "don't understand", type: "negative" },
+            { sentence: "She ___ (study) at university.", answer: "studies", type: "positive" },
+            { sentence: "Dogs ___ (not/fly).", answer: "don't fly", type: "negative" },
+            { sentence: "___ it ___ (rain) often here? (Frage)", answer: "Does, rain", type: "question" }
+        ];
+
+        let currentQuizAnswers = {};
+        let currentExerciseAnswers = {};
+        let isQuizChecked = false;
+        let areExercisesChecked = false;
+
+        // Initialize Quiz
+        function initializeQuiz() {
+            const container = document.getElementById('quizContainer');
+            container.innerHTML = '';
+            
+            quizQuestions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <h4>Frage ${index + 1}: ${q.question}</h4>
+                    <div class="answers">
+                        ${q.answers.map((answer, answerIndex) => `
+                            <div class="answer-option" onclick="selectAnswer(${index}, ${answerIndex})">
+                                <span style="font-weight: bold;">${String.fromCharCode(65 + answerIndex)})</span>
+                                <span>${answer}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(questionDiv);
+            });
+        }
+
+        // Initialize Exercises
+        function initializeExercises() {
+            const container = document.getElementById('exerciseContainer');
+            container.innerHTML = '';
+            
+            exercises.forEach((exercise, index) => {
+                const exerciseDiv = document.createElement('div');
+                exerciseDiv.className = 'exercise-item';
+                
+                const parts = exercise.sentence.split('___');
+                const inputCount = parts.length - 1;
+                
+                let exerciseHTML = `<p>Übung ${index + 1}: `;
+                
+                for (let i = 0; i < parts.length; i++) {
+                    exerciseHTML += parts[i];
+                    if (i < parts.length - 1) {
+                        if (inputCount === 1) {
+                            exerciseHTML += `<input type="text" class="input-field" data-exercise="${index}" data-input="0" placeholder="...">`;
+                        } else {
+                            exerciseHTML += `<input type="text" class="input-field" data-exercise="${index}" data-input="${i}" placeholder="...">`;
+                        }
+                    }
+                }
+                
+                exerciseHTML += `</p>`;
+                exerciseDiv.innerHTML = exerciseHTML;
+                container.appendChild(exerciseDiv);
+            });
+        }
+
+        // Select Quiz Answer
+        function selectAnswer(questionIndex, answerIndex) {
+            if (isQuizChecked) return;
+            
+            currentQuizAnswers[questionIndex] = answerIndex;
+            
+            // Remove previous selections
+            const question = document.querySelectorAll('.question')[questionIndex];
+            question.querySelectorAll('.answer-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selection to clicked answer
+            question.querySelectorAll('.answer-option')[answerIndex].classList.add('selected');
+        }
+
+        // Check Quiz Answers
+        function checkQuizAnswers() {
+            if (isQuizChecked) return;
+            
+            let correctAnswers = 0;
+            
+            quizQuestions.forEach((q, index) => {
+                const question = document.querySelectorAll('.question')[index];
+                const options = question.querySelectorAll('.answer-option');
+                
+                options.forEach((option, optionIndex) => {
+                    if (optionIndex === q.correct) {
+                        option.classList.add('correct');
+                    } else if (currentQuizAnswers[index] === optionIndex) {
+                        option.classList.add('incorrect');
+                    }
+                });
+                
+                if (currentQuizAnswers[index] === q.correct) {
+                    correctAnswers++;
+                }
+            });
+            
+            // Show score
+            const scoreDisplay = document.getElementById('quizScore');
+            const progressFill = document.getElementById('quizProgress');
+            const scoreText = document.getElementById('scoreText');
+            
+            const percentage = (correctAnswers / quizQuestions.length) * 100;
+            
+            scoreDisplay.classList.remove('hidden');
+            progressFill.style.width = percentage + '%';
+            scoreText.textContent = `${correctAnswers} von ${quizQuestions.length} richtig (${Math.round(percentage)}%)`;
+            
+            isQuizChecked = true;
+        }
+
+        // Reset Quiz
+        function resetQuiz() {
+            currentQuizAnswers = {};
+            isQuizChecked = false;
+            document.getElementById('quizScore').classList.add('hidden');
+            
+            document.querySelectorAll('.answer-option').forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+        }
+
+        // Check Exercises
+        function checkExercises() {
+            if (areExercisesChecked) return;
+            
+            let correctAnswers = 0;
+            const inputs = document.querySelectorAll('.input-field');
+            
+            inputs.forEach(input => {
+                const exerciseIndex = parseInt(input.dataset.exercise);
+                const inputIndex = parseInt(input.dataset.input);
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswer = exercises[exerciseIndex].answer.toLowerCase();
+                
+                // Handle multiple inputs (for questions)
+                if (correctAnswer.includes(',')) {
+                    const correctParts = correctAnswer.split(',').map(part => part.trim());
+                    const expectedAnswer = correctParts[inputIndex] || '';
+                    
+                    if (userAnswer === expectedAnswer) {
+                        input.classList.add('correct');
+                        input.classList.remove('incorrect');
+                        correctAnswers++;
+                    } else {
+                        input.classList.add('incorrect');
+                        input.classList.remove('correct');
+                    }
+                } else {
+                    // Single input
+                    if (userAnswer === correctAnswer) {
+                        input.classList.add('correct');
+                        input.classList.remove('incorrect');
+                        correctAnswers++;
+                    } else {
+                        input.classList.add('incorrect');
+                        input.classList.remove('correct');
+                    }
+                }
+            });
+            
+            // Show score
+            const scoreDisplay = document.getElementById('exerciseScore');
+            const progressFill = document.getElementById('exerciseProgress');
+            const scoreText = document.getElementById('exerciseScoreText');
+            
+            const totalInputs = inputs.length;
+            const percentage = (correctAnswers / totalInputs) * 100;
+            
+            scoreDisplay.classList.remove('hidden');
+            progressFill.style.width = percentage + '%';
+            scoreText.textContent = `${correctAnswers} von ${totalInputs} richtig (${Math.round(percentage)}%)`;
+            
+            areExercisesChecked = true;
+        }
+
+        // Reset Exercises
+        function resetExercises() {
+            areExercisesChecked = false;
+            document.getElementById('exerciseScore').classList.add('hidden');
+            
+            document.querySelectorAll('.input-field').forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+            });
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeQuiz();
+            initializeExercises();
+        });
+    </script>
+</body>
+</html>
