@@ -343,6 +343,7 @@
             width: 100%;
             height: 100%;
             background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transform: rotate(-45deg);
             transition: left 0.5s;
         }
 
@@ -617,6 +618,33 @@
             color: #1e40af;
         }
 
+        .practice-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 12px 20px;
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .practice-link:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            text-decoration: none;
+            color: white;
+        }
+
+        .practice-link:before {
+            content: '🎯 ';
+        }
+
         .hidden {
             display: none !important;
         }
@@ -787,29 +815,6 @@
                 <div class="tense-title">
                     <span class="tense-emoji">⏺️</span>
                     Present Simple
-                </div>
-                <div class="level-badges">
-                    <span class="badge grundanforderungen-aktiv">🟢 Grundanforderungen: Aktiv</span>
-                    <span class="badge erweiterte-aktiv">🔴 Erweiterte: Aktiv</span>
-                </div>
-                <div class="tense-content">
-                    <h4>🔨 Wie wird es gebildet?</h4>
-                    <p>I/You/We/They + Grundform<br>He/She/It + Grundform + -s</p>
-                    <h4>🤔 Wann benutze ich es?</h4>
-                    <p>Für Sachen, die immer wieder passieren oder immer wahr sind</p>
-                    <div class="example">
-                        <strong>💬 Beispiele:</strong><br>
-                        I <strong>play</strong> tennis every Sunday. (Ich spiele jeden Sonntag Tennis.)<br>
-                        She <strong>works</strong> in a bank. (Sie arbeitet in einer Bank.)
-                    </div>
-                </div>
-            </div>
-
-            <!-- Present Continuous -->
-            <div class="tense-card present" data-time="present" data-grundanforderungen="aktiv" data-erweiterte="aktiv">
-                <div class="tense-title">
-                    <span class="tense-emoji">🔄</span>
-                    Present Continuous
                 </div>
                 <div class="level-badges">
                     <span class="badge grundanforderungen-aktiv">🟢 Grundanforderungen: Aktiv</span>
@@ -1232,3 +1237,27 @@
     </script>
 </body>
 </html>
+                    <p>I/You/We/They + Grundform<br>He/She/It + Grundform + -s</p>
+                    <h4>🤔 Wann benutze ich es?</h4>
+                    <p>Für Sachen, die immer wieder passieren oder immer wahr sind</p>
+                    <div class="example">
+                        <strong>💬 Beispiele:</strong><br>
+                        I <strong>play</strong> tennis every Sunday. (Ich spiele jeden Sonntag Tennis.)<br>
+                        She <strong>works</strong> in a bank. (Sie arbeitet in einer Bank.)
+                    </div>
+                    <a href="presentsimple.html" class="practice-link">Detaillierte Übungen</a>
+                </div>
+            </div>
+
+            <!-- Present Continuous -->
+            <div class="tense-card present" data-time="present" data-grundanforderungen="aktiv" data-erweiterte="aktiv">
+                <div class="tense-title">
+                    <span class="tense-emoji">🔄</span>
+                    Present Continuous
+                </div>
+                <div class="level-badges">
+                    <span class="badge grundanforderungen-aktiv">🟢 Grundanforderungen: Aktiv</span>
+                    <span class="badge erweiterte-aktiv">🔴 Erweiterte: Aktiv</span>
+                </div>
+                <div class="tense-content">
+                    <h4>🔨 Wie wird es gebildet?</h4>
