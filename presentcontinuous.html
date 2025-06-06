@@ -1,0 +1,815 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Present Continuous - Detaillierte Übungen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            text-decoration: none !important;
+            display: inline-block;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 20px;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            text-decoration: none !important;
+            color: white !important;
+        }
+
+        .section {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #4ecdc4, #44a08d);
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            color: #1e293b;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .theory-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .theory-card {
+            background: linear-gradient(135deg, #f8fafc, #f1f5f9);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #4ecdc4;
+        }
+
+        .theory-card h3 {
+            color: #1e293b;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .theory-card p {
+            margin-bottom: 10px;
+            color: #475569;
+        }
+
+        .example-box {
+            background: linear-gradient(135deg, #e0f2fe, #bae6fd);
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 4px solid #0369a1;
+            margin-top: 15px;
+        }
+
+        .example-box strong {
+            color: #0c4a6e;
+        }
+
+        .quiz-container {
+            margin-top: 30px;
+        }
+
+        .question {
+            background: #f8fafc;
+            padding: 25px;
+            border-radius: 15px;
+            margin-bottom: 20px;
+            border-left: 5px solid #3b82f6;
+        }
+
+        .question h4 {
+            color: #1e293b;
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        .answers {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .answer-option {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .answer-option:hover {
+            border-color: #3b82f6;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(59, 130, 246, 0.2);
+        }
+
+        .answer-option.selected {
+            border-color: #3b82f6;
+            background: #eff6ff;
+        }
+
+        .answer-option.correct {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+
+        .answer-option.incorrect {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        .exercise-container {
+            margin-top: 30px;
+        }
+
+        .exercise-item {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+            border-left: 5px solid #8b5cf6;
+        }
+
+        .exercise-item p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            color: #1e293b;
+        }
+
+        .input-field {
+            width: 200px;
+            padding: 10px 15px;
+            border: 2px solid #d1d5db;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin: 0 5px;
+            transition: all 0.3s ease;
+        }
+
+        .input-field:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 10px rgba(59, 130, 246, 0.2);
+        }
+
+        .input-field.correct {
+            border-color: #10b981;
+            background: #ecfdf5;
+        }
+
+        .input-field.incorrect {
+            border-color: #ef4444;
+            background: #fef2f2;
+        }
+
+        .btn {
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin: 10px 5px;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+        }
+
+        .btn-success {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-success:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-reset {
+            background: linear-gradient(135deg, #64748b, #475569);
+            color: white;
+            box-shadow: 0 4px 15px rgba(100, 116, 139, 0.3);
+        }
+
+        .btn-reset:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(100, 116, 139, 0.4);
+        }
+
+        .score-display {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            border: 2px solid #f59e0b;
+        }
+
+        .score-display h3 {
+            color: #92400e;
+            font-size: 1.4rem;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            background: #e5e7eb;
+            height: 10px;
+            border-radius: 5px;
+            overflow: hidden;
+            margin: 15px 0;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #10b981, #059669);
+            height: 100%;
+            transition: width 0.5s ease;
+            border-radius: 5px;
+        }
+
+        .feedback {
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        .feedback.success {
+            background: #ecfdf5;
+            color: #047857;
+            border: 2px solid #10b981;
+        }
+
+        .feedback.error {
+            background: #fef2f2;
+            color: #b91c1c;
+            border: 2px solid #ef4444;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .theory-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .answers {
+                grid-template-columns: 1fr;
+            }
+            
+            .input-field {
+                width: 100%;
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🔄 Present Continuous</h1>
+            <p>Das passiert gerade JETZT!</p>
+            <div style="margin-top: 20px;">
+                <a href="index.html" class="btn-back">🏠 Zurück zur Hauptseite</a>
+            </div>
+        </div>
+
+        <!-- Theory Section -->
+        <div class="section">
+            <div class="section-title">
+                <span>📚</span>
+                Theorie & Regeln
+            </div>
+            
+            <div class="theory-grid">
+                <div class="theory-card">
+                    <h3>🔨 Bildung</h3>
+                    <p><strong>Bejahung:</strong></p>
+                    <p>I + <strong>am</strong> + Verb + -ing</p>
+                    <p>You/We/They + <strong>are</strong> + Verb + -ing</p>
+                    <p>He/She/It + <strong>is</strong> + Verb + -ing</p>
+                    
+                    <div class="example-box">
+                        <strong>Beispiele:</strong><br>
+                        I <strong>am reading</strong> a book.<br>
+                        She <strong>is working</strong> now.
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3>❌ Verneinung</h3>
+                    <p><strong>Mit am not/aren't/isn't:</strong></p>
+                    <p>I + <strong>am not</strong> + Verb + -ing</p>
+                    <p>You/We/They + <strong>aren't</strong> + Verb + -ing</p>
+                    <p>He/She/It + <strong>isn't</strong> + Verb + -ing</p>
+                    
+                    <div class="example-box">
+                        <strong>Beispiele:</strong><br>
+                        I <strong>am not sleeping</strong>.<br>
+                        He <strong>isn't coming</strong> today.
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3>❓ Fragen</h3>
+                    <p><strong>Mit Am/Are/Is:</strong></p>
+                    <p><strong>Am</strong> I + Verb + -ing?</p>
+                    <p><strong>Are</strong> you/we/they + Verb + -ing?</p>
+                    <p><strong>Is</strong> he/she/it + Verb + -ing?</p>
+                    
+                    <div class="example-box">
+                        <strong>Beispiele:</strong><br>
+                        <strong>Are you studying</strong>?<br>
+                        <strong>Is she coming</strong> with us?
+                    </div>
+                </div>
+
+                <div class="theory-card">
+                    <h3>🤔 Verwendung</h3>
+                    <p>• Aktionen, die JETZT passieren</p>
+                    <p>• Temporäre Situationen</p>
+                    <p>• Geplante Zukunft</p>
+                    <p>• Sich entwickelnde Situationen</p>
+                    
+                    <div class="example-box">
+                        <strong>Beispiele:</strong><br>
+                        I <strong>am eating</strong> lunch right now.<br>
+                        We <strong>are staying</strong> at a hotel this week.<br>
+                        She <strong>is leaving</strong> tomorrow.
+                    </div>
+                </div>
+            </div>
+
+            <div class="theory-card">
+                <h3>⚠️ Wichtige -ing Regeln</h3>
+                <p><strong>Normalfall:</strong> work → work<strong>ing</strong>, play → play<strong>ing</strong></p>
+                <p><strong>Stummes -e wegfallen:</strong> make → mak<strong>ing</strong>, write → writ<strong>ing</strong></p>
+                <p><strong>Verdopplung bei CVC:</strong> stop → stop<strong>p</strong>ing, run → run<strong>n</strong>ing</p>
+                <p><strong>-ie wird zu -y:</strong> lie → l<strong>y</strong>ing, die → d<strong>y</strong>ing</p>
+                
+                <div class="example-box">
+                    <strong>Signalwörter:</strong> now, right now, at the moment, currently, today, this week, Look!, Listen!
+                </div>
+            </div>
+        </div>
+
+        <!-- Quiz Section -->
+        <div class="section">
+            <div class="section-title">
+                <span>🧠</span>
+                Quiz: Wann benutze ich Present Continuous?
+            </div>
+            
+            <div class="quiz-container" id="quizContainer">
+                <!-- Quiz questions will be inserted here -->
+            </div>
+            
+            <div class="score-display hidden" id="quizScore">
+                <h3>Dein Ergebnis:</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="quizProgress"></div>
+                </div>
+                <p id="scoreText">0 von 10 richtig</p>
+            </div>
+            
+            <button class="btn btn-primary" onclick="checkQuizAnswers()">Quiz auswerten</button>
+            <button class="btn btn-reset" onclick="resetQuiz()">Nochmal versuchen</button>
+        </div>
+
+        <!-- Exercise Section -->
+        <div class="section">
+            <div class="section-title">
+                <span>✏️</span>
+                Übungen: Formen bilden
+            </div>
+            
+            <div class="exercise-container" id="exerciseContainer">
+                <!-- Exercises will be inserted here -->
+            </div>
+            
+            <div class="score-display hidden" id="exerciseScore">
+                <h3>Dein Ergebnis:</h3>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="exerciseProgress"></div>
+                </div>
+                <p id="exerciseScoreText">0 von 15 richtig</p>
+            </div>
+            
+            <button class="btn btn-success" onclick="checkExercises()">Übungen prüfen</button>
+            <button class="btn btn-reset" onclick="resetExercises()">Neue Übungen</button>
+        </div>
+    </div>
+
+    <script>
+        // Quiz Data
+        const quizQuestions = [
+            {
+                question: "Welcher Satz verwendet Present Continuous korrekt für eine Aktion, die JETZT passiert?",
+                answers: [
+                    "I read a book every day.",
+                    "I am reading a book right now.",
+                    "I will read a book tomorrow.",
+                    "I have read a book."
+                ],
+                correct: 1
+            },
+            {
+                question: "Wähle die richtige Verneinung:",
+                answers: [
+                    "She doesn't working today.",
+                    "She not is working today.",
+                    "She isn't working today.",
+                    "She aren't working today."
+                ],
+                correct: 2
+            },
+            {
+                question: "Welches Signalwort passt zu Present Continuous?",
+                answers: [
+                    "every day",
+                    "usually",
+                    "right now",
+                    "never"
+                ],
+                correct: 2
+            },
+            {
+                question: "Wie lautet die korrekte Frage?",
+                answers: [
+                    "Do you studying English?",
+                    "Are you study English?",
+                    "Are you studying English?",
+                    "Is you studying English?"
+                ],
+                correct: 2
+            },
+            {
+                question: "Welcher Satz beschreibt eine temporäre Situation?",
+                answers: [
+                    "I live in Berlin.",
+                    "I am living in a hotel this week.",
+                    "I lived in Munich last year.",
+                    "I will live in Hamburg."
+                ],
+                correct: 1
+            },
+            {
+                question: "Wähle die richtige Form für 'they':",
+                answers: [
+                    "They is playing football.",
+                    "They am playing football.",
+                    "They are playing football.",
+                    "They playing football."
+                ],
+                correct: 2
+            },
+            {
+                question: "Welche -ing Form ist korrekt?",
+                answers: [
+                    "makeing",
+                    "making",
+                    "makking",
+                    "makeking"
+                ],
+                correct: 1
+            },
+            {
+                question: "Was bedeutet: 'Look! It's raining.'?",
+                answers: [
+                    "Es regnet jeden Tag.",
+                    "Es wird morgen regnen.",
+                    "Es regnet gerade jetzt.",
+                    "Es hat gestern geregnet."
+                ],
+                correct: 2
+            },
+            {
+                question: "Welcher Satz ist eine geplante Zukunft?",
+                answers: [
+                    "I go to the party tomorrow.",
+                    "I am going to the party tomorrow.",
+                    "I went to the party yesterday.",
+                    "I will go to parties."
+                ],
+                correct: 1
+            },
+            {
+                question: "Wie verneinst du korrekt mit 'I'?",
+                answers: [
+                    "I don't working.",
+                    "I not working.",
+                    "I am not working.",
+                    "I aren't working."
+                ],
+                correct: 2
+            }
+        ];
+
+        // Exercise Data
+        const exercises = [
+            { sentence: "I ___ (read) a book right now.", answer: "am reading", type: "positive" },
+            { sentence: "She ___ (work) at the moment.", answer: "is working", type: "positive" },
+            { sentence: "They ___ (not/play) tennis today.", answer: "aren't playing", type: "negative" },
+            { sentence: "He ___ (not/come) to the party.", answer: "isn't coming", type: "negative" },
+            { sentence: "___ you ___ (study) for the exam? (Frage)", answer: "Are, studying", type: "question" },
+            { sentence: "___ she ___ (cook) dinner? (Frage)", answer: "Is, cooking", type: "question" },
+            { sentence: "We ___ (watch) a movie tonight.", answer: "are watching", type: "positive" },
+            { sentence: "Look! The sun ___ (shine).", answer: "is shining", type: "positive" },
+            { sentence: "I ___ (not/sleep) very well this week.", answer: "am not sleeping", type: "negative" },
+            { sentence: "The children ___ (play) in the garden.", answer: "are playing", type: "positive" },
+            { sentence: "___ it ___ (rain) outside? (Frage)", answer: "Is, raining", type: "question" },
+            { sentence: "My sister ___ (not/work) today.", answer: "isn't working", type: "negative" },
+            { sentence: "Listen! Someone ___ (sing) beautifully.", answer: "is singing", type: "positive" },
+            { sentence: "We ___ (not/go) to school tomorrow.", answer: "aren't going", type: "negative" },
+            { sentence: "___ they ___ (have) a good time? (Frage)", answer: "Are, having", type: "question" }
+        ];
+
+        let currentQuizAnswers = {};
+        let currentExerciseAnswers = {};
+        let isQuizChecked = false;
+        let areExercisesChecked = false;
+
+        // Initialize Quiz
+        function initializeQuiz() {
+            const container = document.getElementById('quizContainer');
+            container.innerHTML = '';
+            
+            quizQuestions.forEach((q, index) => {
+                const questionDiv = document.createElement('div');
+                questionDiv.className = 'question';
+                questionDiv.innerHTML = `
+                    <h4>Frage ${index + 1}: ${q.question}</h4>
+                    <div class="answers">
+                        ${q.answers.map((answer, answerIndex) => `
+                            <div class="answer-option" onclick="selectAnswer(${index}, ${answerIndex})">
+                                <span style="font-weight: bold;">${String.fromCharCode(65 + answerIndex)})</span>
+                                <span>${answer}</span>
+                            </div>
+                        `).join('')}
+                    </div>
+                `;
+                container.appendChild(questionDiv);
+            });
+        }
+
+        // Initialize Exercises
+        function initializeExercises() {
+            const container = document.getElementById('exerciseContainer');
+            container.innerHTML = '';
+            
+            exercises.forEach((exercise, index) => {
+                const exerciseDiv = document.createElement('div');
+                exerciseDiv.className = 'exercise-item';
+                
+                const parts = exercise.sentence.split('___');
+                const inputCount = parts.length - 1;
+                
+                let exerciseHTML = `<p>Übung ${index + 1}: `;
+                
+                for (let i = 0; i < parts.length; i++) {
+                    exerciseHTML += parts[i];
+                    if (i < parts.length - 1) {
+                        if (inputCount === 1) {
+                            exerciseHTML += `<input type="text" class="input-field" data-exercise="${index}" data-input="0" placeholder="...">`;
+                        } else {
+                            exerciseHTML += `<input type="text" class="input-field" data-exercise="${index}" data-input="${i}" placeholder="...">`;
+                        }
+                    }
+                }
+                
+                exerciseHTML += `</p>`;
+                exerciseDiv.innerHTML = exerciseHTML;
+                container.appendChild(exerciseDiv);
+            });
+        }
+
+        // Select Quiz Answer
+        function selectAnswer(questionIndex, answerIndex) {
+            if (isQuizChecked) return;
+            
+            currentQuizAnswers[questionIndex] = answerIndex;
+            
+            // Remove previous selections
+            const question = document.querySelectorAll('.question')[questionIndex];
+            question.querySelectorAll('.answer-option').forEach(option => {
+                option.classList.remove('selected');
+            });
+            
+            // Add selection to clicked answer
+            question.querySelectorAll('.answer-option')[answerIndex].classList.add('selected');
+        }
+
+        // Check Quiz Answers
+        function checkQuizAnswers() {
+            if (isQuizChecked) return;
+            
+            let correctAnswers = 0;
+            
+            quizQuestions.forEach((q, index) => {
+                const question = document.querySelectorAll('.question')[index];
+                const options = question.querySelectorAll('.answer-option');
+                
+                options.forEach((option, optionIndex) => {
+                    if (optionIndex === q.correct) {
+                        option.classList.add('correct');
+                    } else if (currentQuizAnswers[index] === optionIndex) {
+                        option.classList.add('incorrect');
+                    }
+                });
+                
+                if (currentQuizAnswers[index] === q.correct) {
+                    correctAnswers++;
+                }
+            });
+            
+            // Show score
+            const scoreDisplay = document.getElementById('quizScore');
+            const progressFill = document.getElementById('quizProgress');
+            const scoreText = document.getElementById('scoreText');
+            
+            const percentage = (correctAnswers / quizQuestions.length) * 100;
+            
+            scoreDisplay.classList.remove('hidden');
+            progressFill.style.width = percentage + '%';
+            scoreText.textContent = `${correctAnswers} von ${quizQuestions.length} richtig (${Math.round(percentage)}%)`;
+            
+            isQuizChecked = true;
+        }
+
+        // Reset Quiz
+        function resetQuiz() {
+            currentQuizAnswers = {};
+            isQuizChecked = false;
+            document.getElementById('quizScore').classList.add('hidden');
+            
+            document.querySelectorAll('.answer-option').forEach(option => {
+                option.classList.remove('selected', 'correct', 'incorrect');
+            });
+        }
+
+        // Check Exercises
+        function checkExercises() {
+            if (areExercisesChecked) return;
+            
+            let correctAnswers = 0;
+            const inputs = document.querySelectorAll('.input-field');
+            
+            inputs.forEach(input => {
+                const exerciseIndex = parseInt(input.dataset.exercise);
+                const inputIndex = parseInt(input.dataset.input);
+                const userAnswer = input.value.trim().toLowerCase();
+                const correctAnswer = exercises[exerciseIndex].answer.toLowerCase();
+                
+                // Handle multiple inputs (for questions)
+                if (correctAnswer.includes(',')) {
+                    const correctParts = correctAnswer.split(',').map(part => part.trim());
+                    const expectedAnswer = correctParts[inputIndex] || '';
+                    
+                    if (userAnswer === expectedAnswer) {
+                        input.classList.add('correct');
+                        input.classList.remove('incorrect');
+                        correctAnswers++;
+                    } else {
+                        input.classList.add('incorrect');
+                        input.classList.remove('correct');
+                    }
+                } else {
+                    // Single input
+                    if (userAnswer === correctAnswer) {
+                        input.classList.add('correct');
+                        input.classList.remove('incorrect');
+                        correctAnswers++;
+                    } else {
+                        input.classList.add('incorrect');
+                        input.classList.remove('correct');
+                    }
+                }
+            });
+            
+            // Show score
+            const scoreDisplay = document.getElementById('exerciseScore');
+            const progressFill = document.getElementById('exerciseProgress');
+            const scoreText = document.getElementById('exerciseScoreText');
+            
+            const totalInputs = inputs.length;
+            const percentage = (correctAnswers / totalInputs) * 100;
+            
+            scoreDisplay.classList.remove('hidden');
+            progressFill.style.width = percentage + '%';
+            scoreText.textContent = `${correctAnswers} von ${totalInputs} richtig (${Math.round(percentage)}%)`;
+            
+            areExercisesChecked = true;
+        }
+
+        // Reset Exercises
+        function resetExercises() {
+            areExercisesChecked = false;
+            document.getElementById('exerciseScore').classList.add('hidden');
+            
+            document.querySelectorAll('.input-field').forEach(input => {
+                input.value = '';
+                input.classList.remove('correct', 'incorrect');
+            });
+        }
+
+        // Initialize everything when page loads
+        document.addEventListener('DOMContentLoaded', function() {
+            initializeQuiz();
+            initializeExercises();
+        });
+    </script>
+</body>
+</html>
