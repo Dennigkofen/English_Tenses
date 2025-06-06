@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Past Simple - Übersicht</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+
+        .header p {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            text-shadow: 1px 1px 4px rgba(0,0,0,0.3);
+            margin-bottom: 20px;
+        }
+
+        .btn-back {
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.3);
+            text-decoration: none !important;
+            display: inline-block;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .btn-back:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(99, 102, 241, 0.4);
+            text-decoration: none !important;
+            color: white !important;
+        }
+
+        .intro-section {
+            background: white;
+            border-radius: 25px;
+            padding: 40px;
+            margin-bottom: 40px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .intro-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 5px;
+            background: linear-gradient(90deg, #ef4444, #dc2626);
+        }
+
+        .intro-title {
+            font-size: 2.2rem;
+            margin-bottom: 20px;
+            color: #1e293b;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: #475569;
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .quick-examples {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .example-card {
+            background: linear-gradient(135deg, #fef2f2, #fee2e2);
+            padding: 20px;
+            border-radius: 15px;
+            border-left: 4px solid #ef4444;
+        }
+
+        .example-card h4 {
+            color: #991b1b;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .example-card p {
+            color: #7f1d1d;
+            font-weight: 500;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .topic-card {
+            background: white;
+            border-radius: 25px;
+            padding: 35px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            border-top: 6px solid;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .topic-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .topic-card:hover::before {
+            opacity: 1;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.25);
+        }
+
+        .regular-verbs {
+            border-top-color: #10b981;
+        }
+
+        .irregular-verbs {
+            border-top-color: #f59e0b;
+        }
+
+        .practice-exercises {
+            border-top-color: #8b5cf6;
+        }
+
+        .topic-icon {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .topic-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1e293b;
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .topic-description {
+            color: #64748b;
+            margin-bottom: 25px;
+            font-size: 1.05rem;
+            line-height: 1.6;
+            text-align: center;
+            flex-grow: 1;
+        }
+
+        .topic-features {
+            margin-bottom: 25px;
+        }
+
+        .topic-features ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .topic-features li {
+            padding: 8px 0;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .topic-features li::before {
+            content: '✓';
+            color: #10b981;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .topic-button {
+            display: block;
+            width: 100%;
+            padding: 15px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            text-decoration: none;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .topic-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s;
+        }
+
+        .topic-button:hover::before {
+            left: 100%;
+        }
+
+        .btn-regular {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-regular:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(16, 185, 129, 0.4);
+            text-decoration: none !important;
+            color: white !important;
+        }
+
+        .btn-irregular {
+            background: linear-gradient(135deg, #f59e0b, #d97706);
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(245, 158, 11, 0.3);
+        }
+
+        .btn-irregular:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(245, 158, 11, 0.4);
+            text-decoration: none !important;
+            color: white !important;
+        }
+
+        .btn-practice {
+            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            color: white !important;
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .btn-practice:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+            text-decoration: none !important;
+            color: white !important;
+        }
+
+        .difficulty-badge {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 15px;
+        }
+
+        .difficulty-easy {
+            background: linear-gradient(135deg, #d1fae5, #a7f3d0);
+            color: #047857;
+            border: 2px solid #10b981;
+        }
+
+        .difficulty-medium {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            color: #92400e;
+            border: 2px solid #f59e0b;
+        }
+
+        .difficulty-challenging {
+            background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+            color: #6b21a8;
+            border: 2px solid #8b5cf6;
+        }
+
+        .progress-section {
+            background: white;
+            border-radius: 25px;
+            padding: 35px;
+            margin-bottom: 30px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.1);
+        }
+
+        .progress-title {
+            font-size: 1.8rem;
+            color: #1e293b;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+
+        .learning-path {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+            gap: 40px;
+        }
+
+        .path-arrow {
+            font-size: 2rem;
+            color: #94a3b8;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        .path-step {
+            background: white;
+            border: 3px solid;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+        .path-step:hover {
+            transform: scale(1.1);
+        }
+
+        .step-1 { border-color: #10b981; }
+        .step-2 { border-color: #f59e0b; }
+        .step-3 { border-color: #8b5cf6; }
+
+        .step-label {
+            text-align: center;
+            margin-top: 10px;
+            font-weight: 600;
+            color: #475569;
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .quick-examples {
+                grid-template-columns: 1fr;
+            }
+            
+            .learning-path {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .path-arrow {
+                transform: rotate(90deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⏪ Past Simple</h1>
+            <p>Lerne die Vergangenheit richtig!</p>
+            <a href="index.html" class="btn-back">🏠 Zurück zur Hauptseite</a>
+        </div>
+
+        <!-- Introduction -->
+        <div class="intro-section">
+            <div class="intro-title">
+                <span>📖</span>
+                Was ist Past Simple?
+            </div>
+            <div class="intro-text">
+                Past Simple ist die wichtigste Vergangenheitsform im Englischen. Du verwendest sie für Aktionen, die in der Vergangenheit passiert und abgeschlossen sind. Past Simple hat zwei Arten von Verben: <strong>regelmäßige</strong> (mit -ed) und <strong>unregelmäßige</strong> (mit speziellen Formen).
+            </div>
+            
+            <div class="quick-examples">
+                <div class="example-card">
+                    <h4>🟢 Regelmäßige Verben</h4>
+                    <p><strong>work → worked</strong><br>
+                    I <strong>worked</strong> yesterday.</p>
+                </div>
+                <div class="example-card">
+                    <h4>🟡 Unregelmäßige Verben</h4>
+                    <p><strong>go → went</strong><br>
+                    She <strong>went</strong> to school.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Learning Path -->
+        <div class="progress-section">
+            <div class="progress-title">📚 Empfohlener Lernweg</div>
+            <div class="learning-path">
+                <div>
+                    <div class="path-step step-1">🟢</div>
+                    <div class="step-label">1. Regelmäßige<br>Verben</div>
+                </div>
+                <div class="path-arrow">➡️</div>
+                <div>
+                    <div class="path-step step-2">🟡</div>
+                    <div class="step-label">2. Unregelmäßige<br>Verben</div>
+                </div>
+                <div class="path-arrow">➡️</div>
+                <div>
+                    <div class="path-step step-3">🟣</div>
+                    <div class="step-label">3. Gemischte<br>Übungen</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Topics Grid -->
+        <div class="topics-grid">
+            
+            <!-- Regular Verbs -->
+            <div class="topic-card regular-verbs">
+                <div class="topic-icon">🟢</div>
+                <div class="difficulty-badge difficulty-easy">⭐ Einfach</div>
+                <div class="topic-title">Regelmäßige Verben</div>
+                <div class="topic-description">
+                    Lerne die einfachen Regeln für regelmäßige Verben mit -ed Endung. Diese sind die Basis für Past Simple!
+                </div>
+                <div class="topic-features">
+                    <ul>
+                        <li>Grundregel: Verb + -ed</li>
+                        <li>Besondere Endungen (-y, -e, etc.)</li>
+                        <li>Verdopplung von Konsonanten</li>
+                        <li>Viele Beispiele und Regeln</li>
+                        <li>Einfache Übungen</li>
+                    </ul>
+                </div>
+                <a href="pastsimple-regular.html" class="topic-button btn-regular">
+                    📝 Regelmäßige Verben lernen
+                </a>
+            </div>
+
+            <!-- Irregular Verbs -->
+            <div class="topic-card irregular-verbs">
+                <div class="topic-icon">🟡</div>
+                <div class="difficulty-badge difficulty-medium">⭐⭐ Mittel</div>
+                <div class="topic-title">Unregelmäßige Verben</div>
+                <div class="topic-description">
+                    Meistere die 50 wichtigsten unregelmäßigen Verben mit interaktiver Liste und cleveren Lerntricks!
+                </div>
+                <div class="topic-features">
+                    <ul>
+                        <li>Komplette Liste mit 50 Verben</li>
+                        <li>Interaktive Lernkarten</li>
+                        <li>Gruppierung nach Mustern</li>
+                        <li>Audio-Aussprache</li>
+                        <li>Clever Merkhilfen</li>
+                    </ul>
+                </div>
+                <a href="pastsimple-irregular.html" class="topic-button btn-irregular">
+                    📚 Unregelmäßige Verben lernen
+                </a>
+            </div>
+
+            <!-- Practice Exercises -->
+            <div class="topic-card practice-exercises">
+                <div class="topic-icon">🟣</div>
+                <div class="difficulty-badge difficulty-challenging">⭐⭐⭐ Herausfordernd</div>
+                <div class="topic-title">Gemischte Übungen</div>
+                <div class="topic-description">
+                    Teste dein Wissen mit Quiz und Übungen, die regelmäßige und unregelmäßige Verben kombinieren!
+                </div>
+                <div class="topic-features">
+                    <ul>
+                        <li>15 Quiz-Fragen (Multiple Choice)</li>
+                        <li>20 Type-in Übungen</li>
+                        <li>Regelmäßige + Unregelmäßige gemischt</li>
+                        <li>Verneinung und Fragen</li>
+                        <li>Sofortige Bewertung</li>
+                    </ul>
+                </div>
+                <a href="pastsimple-practice.html" class="topic-button btn-practice">
+                    🎯 Übungen starten
+                </a>
+            </div>
+        </div>
+
+        <!-- Additional Info -->
+        <div class="intro-section">
+            <div class="intro-title">
+                <span>💡</span>
+                Lerntipps für Past Simple
+            </div>
+            <div class="quick-examples">
+                <div class="example-card">
+                    <h4>🎯 Strategie</h4>
+                    <p>Starte mit <strong>regelmäßigen Verben</strong>, dann lerne die <strong>häufigsten unregelmäßigen</strong> Verben auswendig.</p>
+                </div>
+                <div class="example-card">
+                    <h4>🔥 Übung macht den Meister</h4>
+                    <p>Verwende <strong>beide Arten gemischt</strong> in den Übungen, um echte Sicherheit zu gewinnen!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
